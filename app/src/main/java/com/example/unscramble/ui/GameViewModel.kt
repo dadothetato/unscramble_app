@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class GameViewModel {
 
+    init {
+        resetGame()
+    }
+
     // Game UI state
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
@@ -38,5 +42,10 @@ class GameViewModel {
             tempWord.shuffle()
         }
         return String(tempWord)
+    }
+
+    fun resetGame() {
+        usedWords.clear()
+        _uiState.value = GameUiState(currentScrambledWord = pickRandomWordAndShuffle())
     }
 }

@@ -53,7 +53,7 @@ class GameViewModel : ViewModel() {
     fun checkUserGuess() {
 
         if (userGuess.equals(currentWord, ignoreCase = true)) {
-
+            
         } else {
             // User's guess is wrong, show an error
             _uiState.update {  currentState ->
